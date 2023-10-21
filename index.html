@@ -6,23 +6,48 @@
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 </head>
 <body>
-    <h1>AR.js Camera with Video</h1>
+    
     
 
-    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
-        <a-assets>
-            <video id="video" loop="true" autoplay="true" src="test.mp4"></video>
+    <a-scene embedded artoolkit='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 250; canvasHeight: 250' >
+
+        <a-assets >
+           <video preload="auto"  id="vid"loop="true" crossorigin  webkit-playsinline playsinline controls>
+              <source  type="video/webm"  src="test.mp4">
+             <!-- FOR NOTMAL VIDEO YOU CAN USE MP4 or WEBM BUT FOR ALPHA VIDEO YOU NEED TO USE .WEBM FORMAT-->
+           </video>
         </a-assets>
-        <a-marker id="marker" preset="hiro">
-            <a-video id="a-video" src="#video" width="2" height="1.125" rotation = "270 0 0" autoplay="false"></a-video>
+      
+        <a-marker id = "marker" preset="hiro" vidhandler>
+            <a-video id="a-video" src="#vid" width="2" height="1.125" rotation = "270 0 0" autoplay="false"></a-video>
         </a-marker>
         <a-entity camera></a-entity>
-    </a-scene>
+     </a-scene>
+     <div class="footer">
+        <div class="row">
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
+              <div class="onebleft">
+                 <button onclick="vid.play()" class="btn btnskips">Play (CHROME)</button>
+              </div>
+              <div class="onebleft">
+                <button onclick="vid.pause()" class="btn btnskips">Pause (CHROME)</button>
+             </div>
+           </div>
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
+              <div class="onebright">
+                 <button onclick="refreshpage()" class="btn btnskips">Refresh</button>
+              </div>
+           </div>
+        </div>
+     </div>
 
+
+
+     
     <script>
         
         const marker = document.getElementById('marker');
-        const videoElement = document.getElementById('video');
+        const videoElement = document.getElementById('vid');
         // Listen for AR.js markerFound event
         marker.addEventListener('markerFound', function () {
             console.log(1)
@@ -40,3 +65,81 @@
 
 </body>
 </html>
+
+<style>
+    .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    }
+    .onebleft{
+    padding: 5px 5px 5px 5px;
+    margin: 5px 15px 5px 5px ;
+    float: left;
+    z-index: 900000000000;
+    }
+    .onebright{
+    padding: 5px 5px 5px 5px;
+    margin: 5px 15px 5px 5px ;
+    float: right;
+    z-index: 900000000000;
+    }
+    .imgon{
+    width: 55px;
+    height: 55px;
+    background-color:white;
+    padding: 3px 2px 2px 2px !important;
+    }
+    .imgss{
+    width: 50px !important;
+    height:50px !important;
+    } 
+    .imgname{
+    font-size: 10px;
+    }
+    .header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: white;
+    }
+    .oneleft{
+    padding: 5px 5px 5px 5px;
+    margin: 5px 15px 5px 5px ;
+    float: left;
+    z-index: 900000000000;
+    }
+    body{
+    margin:0px;
+    overflow: hidden;
+    }
+    .resets{
+    background-color: rgba(51, 51, 51, 0.529);
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    height: 50px;
+    padding: 10px 10px 10px 10px;
+    position: fixed;
+    top: 10px;
+    text-align: center;
+    z-index: 9000000000;
+    bottom: 10px;
+    }
+    .btnskips{
+    background: rgba(0, 0, 0, 0.433);
+    color: white !important;
+    }
+    .btnskips:hover{
+    background: rgb(197, 197, 197);
+    }
+    #arjsDebugUIContainer{
+    display: none;
+    }
+    .a-enter-vr-button{
+    display: none !important;
+    }
+ </style>
