@@ -9,16 +9,16 @@
     
     
 
-    <a-scene embedded artoolkit='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 250; canvasHeight: 250' >
+    <a-scene embedded artoolkit='sourceType: webcam; detectionMode: mono; sourceWidth:1920; sourceHeight:1080; displayWidth: 1920; displayHeight: 1080;' >
 
         <a-assets >
-           <video preload="auto"  id="vid"loop="true" crossorigin  webkit-playsinline playsinline controls>
+           <video preload="auto"  id="vid"loop="true" crossorigin webkit-playsinline playsinline controls>
               <source  type="video/webm"  src="test.mp4">
              <!-- FOR NOTMAL VIDEO YOU CAN USE MP4 or WEBM BUT FOR ALPHA VIDEO YOU NEED TO USE .WEBM FORMAT-->
            </video>
         </a-assets>
       
-        <a-marker id = "marker" preset="hiro" vidhandler>
+        <a-marker id = "marker" preset="hiro" >
             <a-video id="a-video" src="#vid" width="2" height="1.125" rotation = "270 0 0" autoplay="false"></a-video>
         </a-marker>
         <a-entity camera></a-entity>
@@ -35,7 +35,7 @@
            </div>
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
               <div class="onebright">
-                 <button onclick="refreshpage()" class="btn btnskips">Refresh</button>
+                 <button onclick="window.location.reload()" class="btn btnskips">Refresh</button>
               </div>
            </div>
         </div>
@@ -50,14 +50,12 @@
         const videoElement = document.getElementById('vid');
         // Listen for AR.js markerFound event
         marker.addEventListener('markerFound', function () {
-            console.log(1)
             videoElement.setAttribute('visible', 'true'); // Show the video
             videoElement.play(); // Start playing the video
         });
 
         // Listen for AR.js markerLost event
         marker.addEventListener('markerLost', function () {
-            console.log(2)
             videoElement.pause(); // Pause the video when the marker is lost
             videoElement.setAttribute('visible', 'false'); // Hide the video
         });
