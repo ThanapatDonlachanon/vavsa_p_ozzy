@@ -9,9 +9,9 @@
     <h1>AR.js Camera with Video</h1>
     
 
-    <a-scene embedded arjs="trackingMethod: best; debugUIEnabled: false;">
+    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
         <a-assets>
-            <video id="video" loop="true" src="test.mp4"></video>
+            <video id="video" loop="true" autoplay="true" src="test.mp4"></video>
         </a-assets>
         <a-marker id="marker" preset="hiro">
             <a-video id="a-video" src="#video" width="2" height="1.125" rotation = "270 0 0" autoplay="false"></a-video>
