@@ -35,6 +35,14 @@
           });
         }
       });
+      AFRAME.registerComponent("play-on-touch", {
+        init: function() {
+          document.body.addEventListener("touchstart", e => {
+            const src = this.el.getAttribute("src");
+            document.querySelector(src).play();
+          });
+        }
+      });
     </script>
   </head>
   <body style="margin : 0px; overflow: hidden;">
