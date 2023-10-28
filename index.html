@@ -12,24 +12,39 @@
     <a-scene embedded artoolkit='sourceType: webcam; detectionMode: mono; sourceWidth:1920; sourceHeight:1080; displayWidth: 1920; displayHeight: 1080;' >
 
         <a-assets >
-           <video id="vid"loop="true" crossorigin webkit-playsinline playsinline controls>
+           <video id="vid" loop="true" crossorigin webkit-playsinline playsinline controls>
               <source  type="video/mp4"  src="test.mp4">    
            </video>
         </a-assets>
+
+
+        <a-assets >
+         <video id="vid2" loop="true" crossorigin webkit-playsinline playsinline controls>
+            <source  type="video/mp4"  src="test2.mp4">    
+         </video>
+        </a-assets>
       
-        <a-marker id = "marker" preset="hiro" >
+        <a-marker id = "marker" type="pattern" url="pattern-marker.patt"> 
             <a-video id="a-video" src="#vid" width="2" height="1.125" rotation = "270 0 0" autoplay="false"></a-video>
+        </a-marker>
+
+        <a-marker id = "marker2" type="pattern" url="pattern-ENG1.patt"> 
+            <a-video id="a-video2" src="#vid2" width="2" height="1.125" rotation = "270 0 0" autoplay="false"></a-video>
         </a-marker>
         <a-entity camera></a-entity>
      </a-scene>
+
+
+
      <div class="footer">
         <div class="row">
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
               <div class="onebleft">
-                 <button onclick="vid.play()" class="btn btnskips">Play (CHROME)</button>
+                 <button onclick="vid.play()" class="btn btnskips">Play</button>
+                 <button onclick="vid2.play()" class="btn btnskips">Play2</button>
               </div>
               <div class="onebleft">
-                <button onclick="vid.pause()" class="btn btnskips">Pause (CHROME)</button>
+                <button onclick="vid.pause();vid2.pause()" class="btn btnskips">Pause</button>
              </div>
            </div>
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
