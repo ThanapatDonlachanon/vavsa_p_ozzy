@@ -87,7 +87,6 @@
 
      
     <script>
-        let play =  false;
         function play(){
             if (videoElement.getAttribute('visible'))videoElement.play();
             if (videoElement2.getAttribute('visible'))videoElement2.play();
@@ -100,8 +99,7 @@
         // Listen for AR.js markerFound event
         marker.addEventListener('markerFound', function () {
             videoElement.setAttribute('visible', 'true'); // Show the video
-             // Start playing the video
-            if(play){videoElement.play();}
+            videoElement.play(); // Start playing the video
         });
 
         // Listen for AR.js markerLost event
@@ -116,7 +114,7 @@
         // Listen for AR.js markerFound event
         marker2.addEventListener('markerFound', function () {
             videoElement2.setAttribute('visible', 'true'); // Show the video
-            if(play){videoElement2.play();}
+            videoElement2.play(); // Start playing the video
         });
 
         // Listen for AR.js markerLost event
@@ -129,7 +127,7 @@
         // Listen for AR.js markerFound event
         marker3.addEventListener('markerFound', function () {
             videoElement3.setAttribute('visible', 'true'); // Show the video
-            if(play){videoElement3.play();}
+            videoElement3.play(); // Start playing the video
         });
 
         // Listen for AR.js markerLost event
@@ -142,7 +140,7 @@
         // Listen for AR.js markerFound event
         marker4.addEventListener('markerFound', function () {
             videoElement4.setAttribute('visible', 'true'); // Show the video
-            if(play){videoElement4.play();}
+            videoElement4.play(); // Start playing the video
         });
 
         // Listen for AR.js markerLost event
@@ -155,7 +153,7 @@
         // Listen for AR.js markerFound event
         marker5.addEventListener('markerFound', function () {
             videoElement5.setAttribute('visible', 'true'); // Show the video
-            if(play){videoElement5.play();}
+            videoElement5.play(); // Start playing the video
         });
 
         // Listen for AR.js markerLost event
