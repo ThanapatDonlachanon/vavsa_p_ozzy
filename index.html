@@ -87,13 +87,7 @@
 
      
     <script>
-        function playVid(){
-            if (videoElement.getAttribute('visible'))videoElement.play();
-            if (videoElement2.getAttribute('visible'))videoElement2.play();
-            if (videoElement3.getAttribute('visible'))videoElement3.play();
-            if (videoElement4.getAttribute('visible'))videoElement4.play();
-            if (videoElement5.getAttribute('visible'))videoElement5.play();
-        }
+        
         const marker = document.getElementById('marker');
         const videoElement = document.getElementById('vid');
         // Listen for AR.js markerFound event
@@ -161,6 +155,14 @@
             videoElement5.pause(); // Pause the video when the marker is lost
             videoElement5.setAttribute('visible', 'false'); // Hide the video
         });
+
+        function playVid(){
+            if (videoElement.getAttribute('visible'))videoElement.play();
+            if (videoElement2.getAttribute('visible'))videoElement2.play();
+            if (videoElement3.getAttribute('visible'))videoElement3.play();
+            if (videoElement4.getAttribute('visible'))videoElement4.play();
+            if (videoElement5.getAttribute('visible'))videoElement5.play();
+        }
     </script>
 
 </body>
